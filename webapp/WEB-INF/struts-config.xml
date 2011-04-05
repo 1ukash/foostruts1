@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="ExampleForm" type="ru.spbstu.telematics.student.ExampleActionForm"/>
+        <form-bean name="UserForm" type="ru.spbstu.telematics.student.UserActionForm"/>
+    </form-beans>
+
+
+    <action-mappings>
+        <action input="/index.jsp" name="ExampleForm" path="/ExampleAction" scope="request" type="ru.spbstu.telematics.student.ExampleAction">
+            <forward name="success" path="/actionview.jsp" />
+        </action>
+        
+        <action name="UserForm" path="/UserAction" scope="request" type="ru.spbstu.telematics.student.UserAction">
+            <forward name="success" path="/userview.jsp" />
+        </action>
+    </action-mappings>
+
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/vaannila/ApplicationResource"/>
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+
+</struts-config>
