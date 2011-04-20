@@ -19,6 +19,7 @@
         
         <action name="UserForm" path="/UserAction" scope="request" type="ru.spbstu.telematics.student.UserAction">
             <forward name="success" path="/userview.jsp" />
+            <forward name="secret" path="/secret.jsp" />
         </action>
     </action-mappings>
 

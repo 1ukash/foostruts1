@@ -36,6 +36,10 @@ public class UserAction extends org.apache.struts.action.Action {
 		
 		UserActionForm exampleForm = (UserActionForm) form;
 		
+		if ("bob".equals(exampleForm.getUserName())) {
+			return mapping.findForward("secret");
+		}
+		
 		return mapping.findForward(SUCCESS);
 	}
 }

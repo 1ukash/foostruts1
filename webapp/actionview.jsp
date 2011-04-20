@@ -9,6 +9,31 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hello World</title>
+        <script type="text/javascript">
+        function handler() {
+        	try { 
+        	    // state =  "complete"
+        	    if (this.readyState == 4) {
+        	        if (this.status == 200) {
+        	            // обработка ответа
+        	            //alert(this.responseText);
+        	            document.getElementById('ajax').innerHTML=this.responseText;
+        	        } else {
+        	            alert("Не удалось получить данные:\n" +  this.statusText);
+        	        }
+        	    }
+        	  }  catch( e ) {
+        		//обработка ошибок
+        	  }
+        }
+        
+        function sendajax() {
+        	var req = new XMLHttpRequest();
+        	req.open("GET", '/foo/ajax.jsp', true);
+        	req.onreadystatechange=handler;
+        	req.send(null);
+        }
+        </script>
     </head>
     <body>
         <h1><bean:write name="ExampleForm" property="message"></bean:write></h1>
@@ -19,5 +44,12 @@
         	<html:password property="userPass"/>
         	<html:submit/>
         </html:form>
+        
+        <a href="#" onclick="sendajax();">ajaxs link</a>
+        
+        <div id="ajax">
+        	no ajax yet
+        </div>
+        
     </body>
 </html>
