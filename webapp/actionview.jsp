@@ -44,12 +44,13 @@
         	<html:password property="userPass"/>
         	<html:submit/>
         </html:form>
-        
+        <%--
         <a href="#" onclick="sendajax();">ajaxs link</a>
         
         <div id="ajax">
         	no ajax yet
         </div>
+         --%>
         
     </body>
 </html>

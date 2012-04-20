@@ -15,6 +15,8 @@ import org.apache.struts.action.ActionMapping;
 public class ExampleAction extends org.apache.struts.action.Action {
 
 	private final static String SUCCESS = "success";
+	
+	private ApplicationManager manager = new ApplicationManager();
 
 	/**
 	 * This is the action called from the Struts framework.
@@ -36,7 +38,7 @@ public class ExampleAction extends org.apache.struts.action.Action {
 		
 		ExampleActionForm exampleForm = (ExampleActionForm) form;
 		exampleForm.setMessage("Wow! It works!");
-		
+		manager.doTestQuery();
 		return mapping.findForward(SUCCESS);
 	}
 }
